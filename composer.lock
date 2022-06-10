@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6e4a9dd2476552506dba12be3b05aeec",
+    "content-hash": "ba2c4a0c44f6bb7e62cd82c96c1b295d",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -930,6 +930,59 @@
                 }
             ],
             "time": "2022-05-10T09:36:00+00:00"
+        },
+        {
+            "name": "mopo922/laravel-treats",
+            "version": "v2.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mopo922/LaravelTreats.git",
+                "reference": "f272cf1f3ac0c98b33fad43c692dc4f0a86fa58d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mopo922/LaravelTreats/zipball/f272cf1f3ac0c98b33fad43c692dc4f0a86fa58d",
+                "reference": "f272cf1f3ac0c98b33fad43c692dc4f0a86fa58d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "laravel/framework": ">=5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LaravelTreats\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Potter",
+                    "homepage": "https://github.com/mopo922"
+                }
+            ],
+            "description": "A collection of goodies for Laravel 5.",
+            "homepage": "https://github.com/mopo922/LaravelTreats",
+            "keywords": [
+                "api",
+                "controllers",
+                "eloquent",
+                "l5",
+                "laravel",
+                "models",
+                "web"
+            ],
+            "support": {
+                "issues": "https://github.com/mopo922/LaravelTreats/issues",
+                "source": "https://github.com/mopo922/LaravelTreats/tree/v2"
+            },
+            "time": "2018-06-06T02:20:19+00:00"
         },
         {
             "name": "nesbot/carbon",

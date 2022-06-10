@@ -166,6 +166,8 @@ return [
          * Package Service Providers...
          */
 
+        LaravelTreats\LaravelTreatsServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
