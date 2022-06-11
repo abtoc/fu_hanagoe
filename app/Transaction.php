@@ -11,9 +11,8 @@ class Transaction extends Model
     protected $fillable = [
         'date',
         'view_count',
-        'view_count_daily',
         'subscriber_count',
-        'subscriber_count_daily'
+        'video_count',
     ];
 
 
@@ -35,9 +34,11 @@ class Transaction extends Model
             if(is_null($yesterday)){
                 $transaction->view_count_daily = 0;
                 $transaction->subscriber_count_daily = 0;
+                $transaction->video_count_daily = 0;
             } else {
                 $transaction->view_count_daily = $transaction->view_count - $yesterday->view_count;
                 $transaction->subscriber_count_daily = $transaction->subscriber_count - $yesterday->subscriber_count;
+                $transaction->video_count_daily = $transaction->video_count - $yesterday->video_count;
             }
         });
     }

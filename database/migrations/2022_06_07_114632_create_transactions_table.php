@@ -20,6 +20,8 @@ class CreateTransactionsTable extends Migration
             $table->unsignedBigInteger('view_count_daily')->default(0);
             $table->unsignedBigInteger('subscriber_count')->default(0);
             $table->bigInteger('subscriber_count_daily')->default(0);
+            $table->unsignedBigInteger('video_count')->default(0);
+            $table->bigInteger('video_count_daily')->default(0);
             $table->timestamps();
 
             $table->primary(['channel_id', 'date']);

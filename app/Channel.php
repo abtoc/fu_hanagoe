@@ -20,4 +20,9 @@ class Channel extends Model
     {
         return $this->hasMany(Transaction::class);
     }
+
+    public function thumbnails()
+    {
+        return $this->hasMany(Thumbnail::class);
+    }
 }
