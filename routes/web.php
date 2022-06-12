@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
+Route::get('/channels', 'ChannelController@index')->name('channel.index');
+Route::get('/channels/{channel}', 'ChannelController@show')->name('channel.show');
+
 Route::group(['middleware' => ['auth', 'verified']], function(){
     Route::get('/home', 'HomeController@index')->name('home');
 });

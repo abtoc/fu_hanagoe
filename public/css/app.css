@@ -10962,3 +10962,31 @@ a.text-dark:focus {
   }
 }
 
+.channel-header {
+  display: flex;
+}
+
+.channel-header .channel-image {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.channel-header .channel-right {
+  margin: 0 0 0 20px;
+  padding: 0;
+}
+
+.channel-header .channel-title {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.channel-header .channel-text {
+  margin: 10px 0 0;
+  padding: 0;
+}
+
