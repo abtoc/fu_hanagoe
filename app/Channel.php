@@ -9,7 +9,9 @@ class Channel extends Model
     protected $fillable = [
         'id',
         'title',
-        'description'
+        'description',
+        'published_at',
+        'country'
     ];
 
     protected $primaryKey = 'id';

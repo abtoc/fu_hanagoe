@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use Carbon\Carbon;
 use GuzzleHttp\Client;
 
 class YoutubeRepository implements YoutubeRepositoryInterface
@@ -23,6 +24,8 @@ class YoutubeRepository implements YoutubeRepositoryInterface
                 'id' => $json->items[0]->id,
                 'title' => $json->items[0]->snippet->title,
                 'description' => $json->items[0]->snippet->description,
+                'country' => property_exists($json->items[0]->snippet, 'country') ? $json->items[0]->snippet->country : null,
+                'published_at' => Carbon::parse($json->items[0]->snippet->publishedAt),
                 'view_count' => $json->items[0]->statistics->viewCount,
                 'subscriber_count' => $json->items[0]->statistics->subscriberCount,
                 'video_count' => $json->items[0]->statistics->videoCount,

@@ -17,6 +17,8 @@ class CreateChannelsTable extends Migration
             $table->string('id');
             $table->string('title')->index();
             $table->text('description')->nullable();
+            $table->string('country')->nullable();
+            $table->dateTime('published_at');
             $table->bigIncrements('number');
             $table->timestamps();
 
