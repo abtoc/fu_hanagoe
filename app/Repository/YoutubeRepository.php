@@ -7,13 +7,42 @@ use GuzzleHttp\Client;
 
 class YoutubeRepository implements YoutubeRepositoryInterface
 {
+    public function search(String $q)
+    {
+        $client = new Client();
+
+        $q = urlencode($q);
+        $response = $client->request(
+            'GET',
+            config('youtube.search').'?type=channel&part=id,snippet&key='.config('youtube.key').'&q='.$q
+        );
+
+        $json = $response->getBody();
+        $json = json_decode($json);
+
+        $result = array();
+        foreach($json->items as $item){
+            array_push($result, [
+                'channel_id' => $item->snippet->channelId,
+                'title' => $item->snippet->title,
+                'publish_at' => Carbon::parse($item->snippet->publishTime),
+                'thumbnails' => [
+                    'default' => $item->snippet->thumbnails->default->url,
+                    'medium'  => $item->snippet->thumbnails->medium->url,
+                    'high'    => $item->snippet->thumbnails->high->url,
+                ],
+            ]);
+        }
+
+        return $result;
+    }
     public function fetch(String $id): array
     {
         $client = new Client();
 
         $response = $client->request(
             'GET',
-            config('youtube.ap').'?part=snippet,statistics&key='.config('youtube.key').'&id='.$id
+            config('youtube.channels').'?part=snippet,statistics&key='.config('youtube.key').'&id='.$id
         );
 
         $json = $response->getBody();
