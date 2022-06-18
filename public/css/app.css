@@ -10990,3 +10990,41 @@ a.text-dark:focus {
   padding: 0;
 }
 
+.channel-list {
+  display: flex;
+}
+
+.channel-list .channel-image {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.channel-list .channel-right {
+  margin: 0 0 0 16px;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .channel-list .channel-title {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+  }
+}
+
+@media (min-width: 768px) {
+  .channel-list .channel-title {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    font-size: 18px;
+  }
+}
+
+.channel-list .channel-text {
+  margin: 10px 0 0;
+  padding: 0;
+}
+

@@ -17,9 +17,14 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
+Route::group(['middleware' => ['auth', 'verified']], function(){
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/channels/create', 'ChannelController@create')->name('channel.create');
+    Route::post('/channels/store', 'ChannelController@store')->name('channel.store');
+    Route::get('/channels/confirm', 'ChannelController@confirm')->name('channel.confirm');
+    Route::delete('/channels/{channel}/destroy', 'ChannelController@destroy')->name('channel.destroy');
+});
+
 Route::get('/channels', 'ChannelController@index')->name('channel.index');
 Route::get('/channels/{channel}', 'ChannelController@show')->name('channel.show');
 
-Route::group(['middleware' => ['auth', 'verified']], function(){
-    Route::get('/home', 'HomeController@index')->name('home');
-});

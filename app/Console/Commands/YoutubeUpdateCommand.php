@@ -7,6 +7,8 @@ use App\Option;
 use App\Repository\YoutubeRepositoryInterface;
 use App\Services\YoutubeService;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
+use Throwable;
 
 class YoutubeUpdateCommand extends Command
 {
@@ -53,13 +55,20 @@ class YoutubeUpdateCommand extends Command
         $channels = Channel::where('number', '>', $number_next)
                     ->orderBy('number', 'asc')
                     ->take($read_count)->get();
-        foreach($channels as $channel){
-            $service->update($channel->id);
-            if($channel->number === $number_max){
-                Option::set('YOUTUBE_NEXT', 0);
-            } else {
-                Option::set('YOUTUBE_NEXT', $channel->number);
+        try {
+            DB::beginTransaction();
+            foreach($channels as $channel){
+                $service->update($channel->id);
+                if($channel->number === $number_max){
+                    Option::set('YOUTUBE_NEXT', 0);
+                } else {
+                    Option::set('YOUTUBE_NEXT', $channel->number);
+                }
             }
+            DB::commit();
+        } catch(Throwable $e){
+            DB::rollback();
+            throw $e;
         }
     }
 }

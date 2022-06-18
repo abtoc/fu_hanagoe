@@ -40,6 +40,12 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item">
+                            <a href="{{ route('channel.index') }}" class="nav-link">一覧</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('channel.create') }}" class="nav-link">登録</a>
+                        </li>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
