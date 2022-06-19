@@ -84,7 +84,7 @@
         $views = array();
         $views_daily = array();
         foreach($transactions as $transaction){
-            array_push($labels, \Carbon\Carbon::parse($transaction->date)->format('yy/mm'));
+            array_push($labels, \Carbon\Carbon::parse($transaction->date)->format('m/d'));
             array_push($subscribers, $transaction->subscriber_count);
             array_push($subscribers_daily, $transaction->subscriber_count_daily);
             array_push($views, $transaction->view_count);
@@ -115,7 +115,6 @@
                         yAxes: [
                             {
                                 ticks: {
-                                    min: 0,
                                     callback: function(label, index, labels){
                                         if(label >= 10000){
                                             return label/10000+"万";
