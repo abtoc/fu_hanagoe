@@ -112,18 +112,21 @@
                         display: false,
                     },
                     scales: {
-                        yAxes: [
-                            {
-                                ticks: {
-                                    callback: function(label, index, labels){
-                                        if(label >= 10000){
-                                            return label/10000+"万";
-                                        }
-                                        return label;
+                        yAxes: [{
+                            ticks: {
+                                callback: function(label, index, labels){
+                                    if(label >= 10000){
+                                        return label/10000+"万";
                                     }
+                                    return label;
                                 }
                             }
-                        ]
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                maxTicksLimit: 7
+                            }
+                        }]
                     }
                 }
             });
