@@ -53,18 +53,21 @@
                             </table>
                         </div>
                         <div class="row">
-                            <div class="btn-group" role="group"  aria-label="Button Group">
-                                <a class="btn btn-outline-primary" href="{{ 'https://www.youtube.com/channel/'.$channel->id.'/featured' }}" target="blank">チャンネルへ</a>
-                                @guest
+                            @guest
+                                <div class="btn-group" role="group"  aria-label="Button Group">
+                                    <a class="btn btn-outline-primary" href="{{ 'https://www.youtube.com/channel/'.$channel->id.'/featured' }}" target="blank">チャンネルへ</a>
                                     <a href="{{ route('channel.create', ['channel_id' => $channel->id]) }}" class="btn btn-outline-primary">チャンネル登録をする</a>
-                                @else
-                                    <form action="{{ route('channel.destroy', ['channel' => $channel->id ]) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
+                                </div>
+                            @else
+                                <form action="{{ route('channel.destroy', ['channel' => $channel->id ]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <div class="btn-group" role="group"  aria-label="Button Group">
+                                        <a class="btn btn-outline-primary" href="{{ 'https://www.youtube.com/channel/'.$channel->id.'/featured' }}" target="blank">チャンネルへ</a>
                                         <input type="submit" class="btn btn-outline-primary" value="チャンネル登録を解除する">
-                                    </form>
-                                @endguest
-                            </div>
+                                    </div>
+                                </form>
+                            @endguest
                         </div>
                     </div>
                 </div>
