@@ -68,7 +68,10 @@
                         </div>
                     </div>
                 </div>
-            </div>\Carbon\Carbon::parse
+            </div>
+        </div>
+    </div>
+@endsection
 
 @section('script')
     @php
@@ -78,7 +81,7 @@
         $views = array();
         $views_daily = array();
         foreach($transactions as $transaction){
-            array_push($labels, \Carbon\Carbon::parse($transaction->date)->format('m/d'));
+            array_push($labels, \Carbon\Carbon::parse($transaction->date)->format('yy/mm'));
             array_push($subscribers, $transaction->subscriber_count);
             array_push($subscribers_daily, $transaction->subscriber_count_daily);
             array_push($views, $transaction->view_count);
