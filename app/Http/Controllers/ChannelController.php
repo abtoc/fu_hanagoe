@@ -22,9 +22,9 @@ class ChannelController extends Controller
     public function index()
     {
         if(Auth::check()){
-            $channels = Auth::user()->channels()->get();
+            $channels = Auth::user()->channels()->orderBy('created_at', 'asc')->get();
         } else {
-            $channels = Channel::all();
+            $channels = Channel::orderBy('created_at', 'asc')->get();
         }
         return view("channel.index", compact('channels'));
     }
