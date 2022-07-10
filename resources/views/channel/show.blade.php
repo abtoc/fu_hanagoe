@@ -25,7 +25,7 @@
                                 <canvas id="chart_view"></canvas>
                                 <h5>●再生回数</h5>
                                 <canvas id="chart_view_daily"></canvas>
-                                <h5>●DATA ({{ $transactions->last()->updated_at }}更新)</h5>
+                                <h5 style="display: inline;">●DATA</h5>({{ $transactions->last()->updated_at }}更新)
                                 <table class="table table-striped table-sm table-hover">
                                 <thead>
                                     <tr>
