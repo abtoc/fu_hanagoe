@@ -17,7 +17,6 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-
                                 <h5>●チャンネル登録者数推移</h5>
                                 <canvas id="chart_subscriber"></canvas>
                                 <h5>●チャンネル登録者数</h5>
@@ -26,7 +25,7 @@
                                 <canvas id="chart_view"></canvas>
                                 <h5>●再生回数</h5>
                                 <canvas id="chart_view_daily"></canvas>
-                                <h5>●DATA</h5>
+                                <h5>●DATA ({{ $transactions->last()->updated_at }}更新)</h5>
                                 <table class="table table-striped table-sm table-hover">
                                 <thead>
                                     <tr>
