@@ -77,17 +77,20 @@
 
 @section('script')
     @php
+        $last = count($transactions) - 1;
         $labels = array();
         $subscribers = array();
         $subscribers_daily = array();
         $views = array();
         $views_daily = array();
-        foreach($transactions as $transaction){
+        foreach($transactions as $index => $transaction){
             array_push($labels, \Carbon\Carbon::parse($transaction->date)->format('m/d'));
             array_push($subscribers, $transaction->subscriber_count);
             array_push($subscribers_daily, $transaction->subscriber_count_daily);
             array_push($views, $transaction->view_count);
-            array_push($views_daily, $transaction->view_count_daily);
+            if(($index !== $last)  or ($transaction->view_count_daily > 0)){
+                array_push($views_daily, $transaction->view_count_daily);
+            }
         }
     @endphp   
     <script>
