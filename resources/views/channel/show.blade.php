@@ -25,6 +25,8 @@
                                 <canvas id="chart_view"></canvas>
                                 <h5>●再生回数</h5>
                                 <canvas id="chart_view_daily"></canvas>
+                                <h5>●動画あたりの再生数</h5>
+                                <canvas id="chart_view_video"></canvas>
                                 <h5 style="display: inline;">●DATA</h5>({{ $transactions->last()->updated_at }}更新)
                                 <table class="table table-striped table-sm table-hover">
                                 <thead>
@@ -83,6 +85,7 @@
         $subscribers_daily = array();
         $views = array();
         $views_daily = array();
+        $views_videos = array();
         foreach($transactions as $index => $transaction){
             array_push($labels, \Carbon\Carbon::parse($transaction->date)->format('m/d'));
             array_push($subscribers, $transaction->subscriber_count);
@@ -90,6 +93,11 @@
             array_push($views, $transaction->view_count);
             if(($index !== $last)  or ($transaction->view_count_daily > 0)){
                 array_push($views_daily, $transaction->view_count_daily);
+            }
+            if($transaction->video_count === 0){
+                array_push($views_videos, 0);
+            } else {
+                array_push($views_videos, round($transaction->view_count / $transaction->video_count));
             }
         }
     @endphp   
@@ -138,6 +146,7 @@
             drawChart('chart_subscriber_daily', 'チャンネル登録者数', {!! json_encode($labels) !!}, {!! json_encode($subscribers_daily) !!}); 
             drawChart('chart_view', '再生回数累計', {!! json_encode($labels) !!}, {!! json_encode($views) !!}); 
             drawChart('chart_view_daily', '再生回数', {!! json_encode($labels) !!}, {!! json_encode($views_daily) !!}); 
+            drawChart('chart_view_video', '動画あたりの再生数', {!! json_encode($labels) !!}, {!! json_encode($views_videos) !!})
         }
     </script>
 @endsection
