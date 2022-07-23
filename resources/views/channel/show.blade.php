@@ -93,11 +93,11 @@
             array_push($views, $transaction->view_count);
             if(($index !== $last)  or ($transaction->view_count_daily > 0)){
                 array_push($views_daily, $transaction->view_count_daily);
-                if($transaction->video_count === 0){
-                    array_push($views_videos, 0);
-                } else {
-                    array_push($views_videos, round($transaction->view_count / $transaction->video_count));
-                }
+            }
+            if($transaction->video_count === 0){
+                array_push($views_videos, 0);
+            } else {
+                array_push($views_videos, round($transaction->view_count / $transaction->video_count));
             }
         }
     @endphp   
@@ -114,12 +114,25 @@
                         label: title,
                         data: data,
                         lineTension: 0,
-                        fill: falseおやすみなさい
+                        fill: false
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: false,
                     },
                     scales: {
                         yAxes: [{
                             ticks: {
-                                callback: function(labeおやすみなさい
+                                callback: function(label, index, labels){
+                                    if(label >= 10000){
+                                        return label/10000+"万";
+                                    }
+                                    return label;
+                                }
+                            }
+                        }],
+                        xAxes: [{
                             ticks: {
                                 maxTicksLimit: 7
                             }
