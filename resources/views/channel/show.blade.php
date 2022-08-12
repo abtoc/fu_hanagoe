@@ -38,7 +38,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($transactions as $transaction)
+                                    @php
+                                        $transactions_sort = $transactions->sortByDesc('date');
+                                    @endphp
+                                    @foreach($transactions_sort as $transaction)
                                             <tr>
                                                 <td class="text-right">{{ \Carbon\Carbon::parse($transaction->date)->format('y/m/d') }}</td>
                                                 <td class="text-right">{{ \Carbon\Carbon::parse($transaction->date)->isoFormat('ddd') }}</td>
