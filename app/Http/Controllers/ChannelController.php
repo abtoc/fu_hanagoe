@@ -31,7 +31,7 @@ class ChannelController extends Controller
     public function show(Channel $channel)
     {
         $before30 = Carbon::today()->subDay(30);
-        $transactions = $channel->transactions()->where('date','>', $before30)->orderBy('date', 'asc')->get();
+        $transactions = $channel->transactions()->where('date','>', $before30)->orderBy('date', 'desc')->get();
         $thumbnail = $channel->thumbnails()->where('type', 'default')->first();
         return view('channel.show', compact('channel', 'transactions', 'thumbnail'));
     }
