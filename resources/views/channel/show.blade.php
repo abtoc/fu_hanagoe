@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header channel-header">
-                        <div class="channel-image"> <img src="{{ $thumbnail->url }}" alt="{{ $channel->title }}"></div>
+                        <div class="channel-image picture"> <img src="{{ $thumbnail->url }}" alt="{{ $channel->title }}"></div>
                         <div class="channel-right">
                             <div class="channel-title">{{ $channel->title }}</div>
                             <div class="channel-text">

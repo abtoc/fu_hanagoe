@@ -13,7 +13,7 @@
                                     <tr>
                                         <td>
                                             <div class="channel-list">
-                                                <div class="channel-image"><img src="{{ $channel->thumbnails()->where('type','default')->first()->url }}" alt="{{ $channel->title }}"></div>
+                                                <div class="channel-image picture"><img src="{{ $channel->thumbnails()->where('type','default')->first()->url }}" alt="{{ $channel->title }}"></div>
                                                 <div class="channel-right">
                                                     <div class="channel-title">
                                                         <a href="{{ route('channel.show', ['channel' => $channel->id]) }}">
