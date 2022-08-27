@@ -53,8 +53,6 @@
     @media(min-width: 768px){
         .channel-title {
             margin: 0;
-            padding: 0;
-            font-weight: bold;
             font-size: 18px;
         }
     }
@@ -62,4 +60,9 @@
         margin: 10px 0 0;
         padding: 0;
     }
+}
+
+
+.picture {
+    border-radius: 50%;
 }

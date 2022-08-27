@@ -11017,8 +11017,6 @@ a.text-dark:focus {
 @media (min-width: 768px) {
   .channel-list .channel-title {
     margin: 0;
-    padding: 0;
-    font-weight: bold;
     font-size: 18px;
   }
 }
@@ -11026,5 +11024,9 @@ a.text-dark:focus {
 .channel-list .channel-text {
   margin: 10px 0 0;
   padding: 0;
+}
+
+.picture {
+  border-radius: 50%;
 }
 
